@@ -1,0 +1,131 @@
+.spinner {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  display: inline-block;
+}
+.double-bounce1,
+.double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #dd4400;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: bounce 2s infinite ease-in-out;
+  animation: bounce 2s infinite ease-in-out;
+}
+.double-bounce2 {
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+}
+@-webkit-keyframes bounce {
+  0%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "STHeitiSC-Light", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-size: 16px;
+  position: fixed;
+  overflow: auto;
+  bottom: 0;
+  top: 0;
+  background-color: #ecedee;
+}
+.clearfix:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+.topbar {
+  height: 8px;
+  background-color: #dd4400;
+}
+.about-area {
+  margin-top: 20px;
+}
+.about-area img {
+  max-width: 100px;
+  display: block;
+  margin: auto;
+}
+.about-col {
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  text-align: center;
+}
+.about-col.left {
+  font-size: 12px;
+  padding-top: 10px;
+}
+.danger-area {
+  padding: 20px;
+  background-color: #e26f42;
+  color: #f5f6f7;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.safe-area {
+  padding: 20px;
+  background-color: #dbdbdb;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.main {
+  background-color: #ecedee;
+  color: #333333;
+  padding: 20px;
+}
+.main-title {
+  text-align: center;
+}
+.main-danger-desc {
+  color: #f5f6f7;
+  font-size: 12px;
+  padding: 10px 10px 10px 20px;
+  border-left: 4px solid #e26f42;
+  background-color: #344463;
+}
+.main-checking {
+  text-align: center;
+  color: #dd4400;
+}
+.main-click-btn {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  background-color: transparent;
+  height: 50px;
+  font-size: 20px;
+  color: #e26f42;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 50px;
+  text-align: center;
+  border-color: #e26f42;
+  letter-spacing: 10px;
+}
+.main-click-btn:hover {
+  color: #ecedee;
+  background-color: #e26f42;
+}

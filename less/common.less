@@ -1,0 +1,35 @@
+@text-black: #333333;
+@text-black-light: #3C3C3B;
+@text-black-lighter: #575756;
+@front-red: #DD4400;
+@front-orange: #E26F42;
+@front-orange-dark: #D66441;
+@text-white: #F5F6F7;
+@border-grey: #EDEEEF;
+@fill-grey: #F5F6F7;
+@fill-grey-1: #EFEFEF;
+@fill-grey-2: #DBDBDB;
+@fill-black: #1E2020;
+@fill-blue-dark: #262B33;
+@fill-blue-dark-1: #344463;
+@text-grey-deep-1: #2E3544;
+@text-grey-deep-2: #666666;
+@text-grey-deep-3: #808080;
+@text-grey: #A5A5A5;
+@text-grey-lighter: #CDCDCD;
+@text-blue: #7186A5;
+@text-blue-dark: #273449;
+@text-blue-grey: #AFB7BC;
+@home-white-fill: #ECEDEE;
+
+.transition(@transition_type: all) {
+	-webkit-transition: @transition_type .3s ease;
+	-o-transition: @transition_type .3s ease;
+	transition: @transition_type .3s ease;
+}
+
+.transform(@transform_content) {
+	-webkit-transform: @transform_content;
+	-o-transform: @transform_content;
+	transform: @transform_content;	
+}

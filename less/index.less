@@ -1,0 +1,99 @@
+@import 'common';
+@import 'preload';
+
+body {
+	margin: 0;
+	font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","STHeitiSC-Light","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+	font-size: 16px;
+	position: fixed;
+    overflow: auto;
+    bottom: 0;
+    top: 0;
+    background-color: @home-white-fill;
+}
+
+.clearfix:after {
+	content: " ";
+	display: table;
+	clear: both;
+}
+
+.topbar {
+	height: 8px;
+	background-color: @front-red;
+}
+
+.about {
+	&-area {
+		margin-top: 20px;
+		img {
+			max-width: 100px;
+			display: block;
+			margin: auto;
+		}
+	}
+	&-col {
+		box-sizing: border-box;
+		width: 50%;
+		float: left;
+		text-align: center;
+		&.left {
+			font-size: 12px;
+			padding-top: 10px;
+		}
+	}
+}
+
+.danger-area {
+	padding: 20px;
+	background-color: @front-orange;
+	color: @text-white;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.safe-area {
+	padding: 20px;
+	background-color: @fill-grey-2;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.main {
+	background-color: @home-white-fill;
+	color: @text-black;
+	padding: 20px;
+	&-title {
+		text-align: center;
+	}
+	&-danger-desc {
+		color: @text-white;
+		font-size: 12px;
+		padding: 10px 10px 10px 20px;
+		border-left: 4px solid @front-orange;
+		background-color: @fill-blue-dark-1;
+	}
+	&-checking {
+		text-align: center;
+		color: @front-red;
+	}
+	&-click-btn {
+		display: block;
+		width: 100%;
+		text-decoration: none;
+		background-color: transparent;
+		height: 50px;
+		font-size: 20px;
+		color: @front-orange;
+		border-width: 2px;
+		border-style: solid;
+		border-radius: 50px;
+		text-align: center;
+		border-color: @front-orange;
+		letter-spacing: 10px;
+		&:hover {
+			color: @home-white-fill;
+			background-color: @front-orange;
+		}
+	}
+}

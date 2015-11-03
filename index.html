@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WormHole在线检测 | 码源</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<div class="topbar"></div>
+<div class="danger-area" style="max-height: 0; padding: 0 20px;">
+	该手机受到 WormHole 漏洞影响，该漏洞可能导致您手机的敏感信息(如通讯录，短信等)泄露。请尽快更新百度及手机上的其他应用到最新版本！
+	<div class="about-area clearfix">
+		<div class="about-col left">
+			Power By
+			<img src="images/codefrom-logo-v2-white.png">
+			<p>长按识别二维码关注码源</p>
+		</div>
+		<div class="about-col right">
+			<img src="images/weixin.jpg">
+		</div>
+	</div>
+</div>
+<div class="safe-area" style="max-height: 0; padding: 0 20px;">
+	手机暂不受 WormHole 漏洞影响！
+	<div class="about-area clearfix">
+		<div class="about-col left">
+			Power By
+			<img src="images/codefrom-logo-v2.png">
+			<p>长按识别二维码关注码源</p>
+		</div>
+		<div class="about-col right">
+			<img src="images/weixin.jpg">
+		</div>
+	</div>
+</div>
+<div class="main">
+	<h2 class="main-title">WormHole在线检测</h2>
+	<p class="main-danger-desc">如果我们的手机上有安装被感染的APP，无论手机root与否，一旦连上网络，都面临着隐私泄漏和财产损失的重大威胁。黑客可以获取您的通信记录，短信，隐私照片，甚至威胁您的银行账号安全等。</p>
+	<div style="height: 20px;"></div>
+	<div class="main-checking">
+		<div class="spinner">
+  			<div class="double-bounce1"></div>
+  			<div class="double-bounce2"></div>
+		</div>
+		<p>检测中...</p>
+	</div>
+	<button class="main-click-btn" style="display: none">再测一次</button>
+</div>
+</body>
+<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+	(function(){
+		var CHECK_LIST = [
+			'http://127.0.0.1:40310/getcuid?secret=0&mcmdf=inapp_',
+			'http://127.0.0.1:40310/geolocation?mcmdf=inapp_',
+			'http://127.0.0.1:40310/getapn?mcmdf=inapp_',
+			'http://127.0.0.1:40310/getapplist?mcmdf=inapp_',
+			'http://127.0.0.1:6259/getcuid?secret=0&mcmdf=inapp_',
+			'http://127.0.0.1:6259/geolocation?mcmdf=inapp_',
+			'http://127.0.0.1:6259/getapn?mcmdf=inapp_',
+			'http://127.0.0.1:6259/getapplist?mcmdf=inapp_'
+		];
+
+		var $dangerAlert = $('.danger-area');
+		var $safeAlert = $('.safe-area');
+		var $checkingArea = $('.main-checking');
+		var $checkBtn = $('.main-click-btn');
+
+		function check(succ, fail) {
+			var hasSucc = false;
+			for(var i = 0; i < CHECK_LIST.length; i++) {
+				$.ajax({
+					url 		: CHECK_LIST[i],
+					dataType 	: "jsonp",
+					success: function(jsonData) {
+						if(hasSucc) return;
+						hasSucc = true;
+						succ();
+					}
+				})
+			}
+			setTimeout(function() {
+				if(hasSucc) return;
+				fail();
+			}, 5000);
+		}
+
+		function succFn() {
+			setTimeout(function () {
+				$checkingArea.fadeOut(500);
+				setTimeout(function(){
+					$checkBtn.fadeIn(500);
+				}, 550);
+				$dangerAlert.animate({
+					'max-height': 300,
+					'padding': '20px'
+				});
+			} , 1000);
+		}
+		function failFn() {
+			$checkingArea.fadeOut(500);
+			setTimeout(function(){
+				$checkBtn.fadeIn(500);
+			}, 550);
+			$safeAlert.animate({
+				'max-height': 300,
+				'padding': '20px'
+			});
+		}
+		function tryAgain() {
+			$checkBtn.fadeOut(500);
+			setTimeout(function(){
+				$checkingArea.fadeIn(500);
+			}, 550);
+			$safeAlert.animate({
+				'max-height': 0,
+				'padding': '0 20px'
+			});
+			$dangerAlert.animate({
+				'max-height': 0,
+				'padding': '0 20px'
+			});
+			check(succFn, failFn);
+		}
+		check(succFn, failFn);
+		$checkBtn.on('click', function(){
+			tryAgain();
+		});
+	})();
+</script>
+</html>
