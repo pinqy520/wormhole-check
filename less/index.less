@@ -5,10 +5,6 @@ body {
 	margin: 0;
 	font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","STHeitiSC-Light","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 	font-size: 16px;
-	position: fixed;
-    overflow: auto;
-    bottom: 0;
-    top: 0;
     background-color: @home-white-fill;
 }
 
@@ -16,6 +12,25 @@ body {
 	content: " ";
 	display: table;
 	clear: both;
+}
+
+.share-modal {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	color: @text-white;
+	background-color: rgba(0, 0, 0, 0.9);
+	background-image: url(../images/share.png);
+	background-position: right top;
+	background-size: 100px auto;
+	background-repeat: no-repeat;
+	font-size: 12px;
+	&-text {
+		margin: 80px 80px 0 20px;
+	}
+	z-index: 10;
 }
 
 .topbar {
@@ -63,6 +78,9 @@ body {
 	background-color: @home-white-fill;
 	color: @text-black;
 	padding: 20px;
+	&-tips {
+		font-size: 10px;
+	}
 	&-title {
 		text-align: center;
 	}

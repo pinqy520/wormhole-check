@@ -45,16 +45,30 @@ body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "STHeitiSC-Light", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   font-size: 16px;
-  position: fixed;
-  overflow: auto;
-  bottom: 0;
-  top: 0;
   background-color: #ecedee;
 }
 .clearfix:after {
   content: " ";
   display: table;
   clear: both;
+}
+.share-modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  color: #f5f6f7;
+  background-color: rgba(0, 0, 0, 0.9);
+  background-image: url(../images/share.png);
+  background-position: right top;
+  background-size: 100px auto;
+  background-repeat: no-repeat;
+  font-size: 12px;
+  z-index: 10;
+}
+.share-modal-text {
+  margin: 80px 80px 0 20px;
 }
 .topbar {
   height: 8px;
@@ -95,6 +109,9 @@ body {
   background-color: #ecedee;
   color: #333333;
   padding: 20px;
+}
+.main-tips {
+  font-size: 10px;
 }
 .main-title {
   text-align: center;

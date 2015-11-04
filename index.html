@@ -7,6 +7,9 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
+<div class="share-modal" style="display: none">
+	<div class="share-modal-text">分享一下！</div>
+</div>
 <div class="topbar"></div>
 <div class="danger-area" style="max-height: 0; padding: 0 20px;">
 	该手机受到 WormHole 漏洞影响，该漏洞可能导致您手机的敏感信息(如通讯录，短信等)泄露。请尽快更新百度及手机上的其他应用到最新版本！
@@ -35,6 +38,7 @@
 	</div>
 </div>
 <div class="main">
+	<div class="main-tips">提示：建议检测之前请先启动一个百度的APP在后台运行，如百度地图。</div>
 	<h2 class="main-title">WormHole在线检测</h2>
 	<p class="main-danger-desc">如果我们的手机上有安装被感染的APP，无论手机root与否，一旦连上网络，都面临着隐私泄漏和财产损失的重大威胁。黑客可以获取您的通信记录，短信，隐私照片，甚至威胁您的银行账号安全等。</p>
 	<div style="height: 20px;"></div>
@@ -49,6 +53,29 @@
 </div>
 </body>
 <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+	(function(){
+		var browserCheck = {
+		    versions: function () {
+		        var u = navigator.userAgent.toLowerCase(), app = navigator.appVersion;
+		        // alert(u);
+		        return {         //移动终端浏览器版本信息
+		        	weixin: u.indexOf('micromessenger') > -1,
+		            android: u.indexOf('android') > -1 || u.indexOf('linux') > -1, //android终端或uc浏览器
+		        };
+		    }(),
+		    language: (navigator.browserLanguage || navigator.language).toLowerCase()
+		};
+		var cua = browserCheck.versions;
+		if(!cua.android) {
+			$('.share-modal-text').text('非 Android(安卓) 系统暂不受影响，快分享给你 Android(安卓) 的小伙伴们检测一下吧！');
+			$('.share-modal').show();
+		} else if(cua.weixin) {
+			$('.share-modal-text').text('在微信中测试不太准确，请点击右上角在浏览器中打开！');
+			$('.share-modal').show();
+		}
+	})();
+</script>
 <script type="text/javascript">
 	(function(){
 		var CHECK_LIST = [
